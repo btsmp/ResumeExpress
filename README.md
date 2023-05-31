@@ -1,4 +1,3 @@
-# Bot de Busca e Envio Automático de Emails
 
 Este é um bot desenvolvido em Typescript que utiliza as bibliotecas Sendinblue e Puppeteer para buscar emails e títulos de vagas de emprego em determinados sites e enviar emails automaticamente.
 
