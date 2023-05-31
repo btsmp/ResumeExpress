@@ -1,5 +1,4 @@
 import fs from 'fs'
-
 class BlobConversor {
   async convertFileToBase64Blob(filePath: string): Promise<string> {
     try {

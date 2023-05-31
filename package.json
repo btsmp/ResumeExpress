@@ -2,14 +2,17 @@
   "name": "curriculum-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.ts",
   "scripts": {
-    "dev": "tsx src/index.ts",
-    "email": "node ./src/sendEmail.js"
+    "dev:bot": "tsx src/index.ts",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "eslint -c .eslintrc --ext .ts ./src",
+    "start": "npm run build && electron ./dist/main.js"
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
+  "license": "Apache License 2.0",
   "dependencies": {
     "@sendinblue/client": "^3.3.1",
     "dotenv": "^16.0.3",
@@ -19,6 +22,7 @@
   "devDependencies": {
     "@rocketseat/eslint-config": "^1.2.0",
     "@types/node": "^20.2.5",
+    "electron": "^25.0.0",
     "eslint": "^8.41.0",
     "tsx": "^3.12.7",
     "typescript": "^5.0.4"

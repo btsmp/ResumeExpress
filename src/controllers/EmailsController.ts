@@ -22,7 +22,7 @@ interface Attachment {
   name: string
 }
 
-interface Email {
+interface EmailShape {
   sender: Sender
   to: Recipient[]
   subject: string
@@ -35,6 +35,7 @@ interface EmailRequest {
   subject: string
   senderEmail: string
   senderName: string
+  attatchPath: string
 }
 
 class EmailsController {
@@ -58,10 +59,9 @@ class EmailsController {
     subject,
     senderEmail,
     senderName,
-  }: EmailRequest): Promise<Email> {
-    const attachment = await this.conversor.processConversion(
-      './src/assets/lucas.pdf',
-    )
+    attatchPath,
+  }: EmailRequest): Promise<EmailShape> {
+    const attachment = await this.conversor.processConversion(attatchPath)
     return {
       sender: { email: senderEmail, name: senderName },
       to: [{ email: toEmail, name: 'Recrutador' }],
@@ -76,7 +76,7 @@ class EmailsController {
     }
   }
 
-  public sendEmail(emailRequest: Email): void {
+  public sendEmail(emailRequest: EmailShape): void {
     if (this.apiKey) {
       this.emailApi
         .sendTransacEmail(emailRequest)

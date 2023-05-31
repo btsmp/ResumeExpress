@@ -18,6 +18,7 @@ async function start() {
             subject: `VAGA - ${job.title}`,
             senderEmail: 'brunoctsb@gmail.com',
             senderName: 'Bruno Sampaio',
+            attatchPath: './src/assets/lucas.pdf',
           })
 
           console.log(emailContent)
