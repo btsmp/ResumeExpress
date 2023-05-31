@@ -53,4 +53,4 @@ Contribuições são bem-vindas! Se você quiser adicionar recursos, corrigir bu
 
 ## Licença
 
-Este projeto está licenciado sob a Licença Apache 2.0. Consulte o arquivo [LICENSE]("https://raw.githubusercontent.com/btsmp/bot-for-jobs/master/LICENSE") para obter mais informações.
+Este projeto está licenciado sob a Licença Apache 2.0. Consulte o arquivo [LICENSE](https://raw.githubusercontent.com/btsmp/bot-for-jobs/master/LICENSE) para obter mais informações.
