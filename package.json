@@ -1,0 +1,26 @@
+{
+  "name": "curriculum-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "email": "node ./src/sendEmail.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@sendinblue/client": "^3.3.1",
+    "dotenv": "^16.0.3",
+    "puppeteer": "^20.2.1",
+    "sib-api-v3-sdk": "^8.5.0"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^1.2.0",
+    "@types/node": "^20.2.5",
+    "eslint": "^8.41.0",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.4"
+  }
+}
