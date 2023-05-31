@@ -15,7 +15,7 @@ Siga as etapas abaixo para configurar e executar o bot:
 1. Clone este repositório para o seu ambiente local.
 
 ```bash
-git clone https://github.com/btsmp/bot-for-jobs
+git clone https://github.com/btsmp/ResumeExpress
 ```
 
 2. Navegue até o diretório do projeto.
