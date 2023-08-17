@@ -51,7 +51,7 @@ class EmailsController {
       this.emailApi.setApiKey(TransactionalEmailsApiApiKeys.apiKey, this.apiKey)
     }
     this.conversor = new BlobConversor()
-    this.htmlContent = `<!DOCTYPE html><html><body><p>Caro recrutador,</p><p> Estou me candidatando à vaga disponível em sua empresa e gostaria de destacar minha forte motivação em aprender e desenvolver novas habilidades, mesmo não tendo experiência prévia nessa área específica. Como videomaker autônomo desde 2019, adquiri habilidades sólidas em produção, edição e captura de vídeos, utilizando softwares como Adobe Premiere Pro, Adobe Photoshop e Adobe Lightroom. Tenho facilidade de adaptação, sou proativo, comunicativo e dinâmico. Estou confiante de que posso aprender rapidamente e contribuir para o sucesso da equipe.<br/>Agradeço a atenção e aguardo um retorno positivo.<p/><br /> <span> Atenciosamente,<br/>Allan </span></body></html>`
+    this.htmlContent = `<!DOCTYPE html><html><body><p>Caro recrutador,</p><p> Estou me candidatando à vaga disponível em sua empresa e gostaria de destacar minha forte motivação em aprender e desenvolver novas habilidades.<br/>Adquiri habilidades sólidas em cozinha e atendimento ao cliente. Tenho facilidade de adaptação, sou proativo, comunicativo e dinâmico. Estou confiante de que posso aprender rapidamente e contribuir para o sucesso da equipe.<br/>Agradeço a atenção e aguardo um retorno positivo.<p/><br /> <span> Atenciosamente,<br/>Almir </span></body></html>`
   }
 
   public async createSendEmailRequest({

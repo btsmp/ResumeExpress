@@ -1,41 +1,38 @@
-import { app, BrowserWindow } from 'electron'
-import * as path from 'path'
+import ScrapingController from './controllers/ScrapingController'
+import EmailsController from './controllers/EmailsController'
 
-function createWindow() {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-    },
-    width: 800,
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
+
+const mailer = new EmailsController()
+const scraper = new ScrapingController()
+
+async function start() {
+  const jobs = await scraper.getJobs()
+
+  jobs.forEach((job) => {
+    if (emailRegex.test(job.email)) {
+      ;(async () => {
+        try {
+          const emailContent = await mailer.createSendEmailRequest({
+            toEmail: job.email,
+            subject: `VAGA - ${job.title}`,
+            senderEmail: 'ikiforever123@gmail.com',
+            senderName: 'Almir Brito',
+            attatchPath: './src/assets/almir_junior.pdf',
+          })
+          const sender = mailer.sendEmail(emailContent)
+          console.log(sender)
+          console.log(job.email, job.title)
+
+          console.log('Email enviado com sucesso!')
+        } catch (error) {
+          console.error('Erro ao enviar o email:', error)
+        }
+      })()
+    } else {
+      console.log(`${job.title}: Email inválido -> ${job.email}`)
+    }
   })
-
-  // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, '../index.html'))
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
-  createWindow()
-
-  app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
-})
-
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
-})
-
-// In this file you can include the rest of your app"s specific main process
-// code. You can also put them in separate files and require them here.
+start()

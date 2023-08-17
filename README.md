@@ -21,7 +21,7 @@ git clone https://github.com/btsmp/ResumeExpress
 2. Navegue até o diretório do projeto.
 
 ```bash
-cd bot-for-jobs
+cd ResumeExpress
 ```
 
 3. Instale as dependências do projeto.
