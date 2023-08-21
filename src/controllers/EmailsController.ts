@@ -51,7 +51,9 @@ class EmailsController {
       this.emailApi.setApiKey(TransactionalEmailsApiApiKeys.apiKey, this.apiKey)
     }
     this.conversor = new BlobConversor()
-    this.htmlContent = `<!DOCTYPE html><html><body><p>Caro recrutador,</p><p> Estou me candidatando à vaga disponível em sua empresa e gostaria de destacar minha forte motivação em aprender e desenvolver novas habilidades.<br/>Adquiri habilidades sólidas em cozinha e atendimento ao cliente. Tenho facilidade de adaptação, sou proativo, comunicativo e dinâmico. Estou confiante de que posso aprender rapidamente e contribuir para o sucesso da equipe.<br/>Agradeço a atenção e aguardo um retorno positivo.<p/><br /> <span> Atenciosamente,<br/>Almir </span></body></html>`
+    this.htmlContent = `
+    <!DOCTYPE html>
+    <html><body><p>Caro recrutador,</p><p> Estou me candidatando à vaga disponível em sua empresa e gostaria de destacar minha forte motivação em aprender e desenvolver novas habilidades.<br/>Adquiri habilidades sólidas em atendimento ao cliente e vendas. Tenho facilidade de adaptação, sou proativo, comunicativo e dinâmico. Estou confiante de que posso aprender rapidamente e contribuir para o sucesso da equipe.<br/>Agradeço a atenção e aguardo um retorno positivo.<p/><br /> <span> Atenciosamente,<br/>Kamilli Vitória </span></body></html>`
   }
 
   public async createSendEmailRequest({
@@ -76,16 +78,14 @@ class EmailsController {
     }
   }
 
-  public sendEmail(emailRequest: EmailShape): void {
+  public async sendEmail(emailRequest: EmailShape): Promise<void> {
     if (this.apiKey) {
-      this.emailApi
-        .sendTransacEmail(emailRequest)
-        .then(function (data) {
-          console.log(data)
-        })
-        .catch(function (error) {
-          console.error(error)
-        })
+      try {
+        await this.emailApi.sendTransacEmail(emailRequest)
+        console.log('Email enviado com sucesso!')
+      } catch (err) {
+        console.log(err)
+      }
     } else {
       console.error('API key is not defined.')
     }
